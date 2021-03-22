@@ -10,7 +10,7 @@ env:
   APP_JAR_DIR: target/actions-0.0.1-SNAPSHOT.jar
 
 jobs:
-  build:
+  compile-build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -20,11 +20,7 @@ jobs:
       - run: |-
           mvn package -U -Dcodegen.skip -Dmaven.test.skip=true
           mv $APP_JAR_DIR app.jar
-          docker build -f Dockerfile -t $IMAGE_NAME .      
-  push:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
+          docker build -f Dockerfile -t $IMAGE_NAME .
       - uses: elgohr/Publish-Docker-Github-Action@master
         with:
           name: ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_REGISTRY }}
