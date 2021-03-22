@@ -30,4 +30,4 @@ jobs:
         # 转换大写为小写
         # IMAGE_ID=$(echo $IMAGE_ID | tr '[A-Z]' '[a-z]')
         docker tag $IMAGE_NAME uupu/$IMAGE_ID:latest
-        docker push $IMAGE_ID:latest
+        docker push uupu/$IMAGE_ID:latest
