@@ -18,22 +18,12 @@ jobs:
         with:
           java-version: 1.8
       - run: mvn package -U -Dcodegen.skip -Dmaven.test.skip=true
-#      - run : mv $APP_JAR_DIR app.jar
-      - uses: docker/build-push-action@v2
-        with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
-          repository: uupu/qianguangfu
-          tag_with_ref: true
-
-#  job2-push:
-#    runs-on: ubuntu-latest
-#    steps:
+      - run : mv $APP_JAR_DIR app.jar
 #      # 构建镜像，指定镜像名
-#      - run: docker build . --file Dockerfile --tag $IMAGE_NAME
-#      - run: docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin ${{ secrets.DOCKER_PASSWORD }}
-#      - run: docker tag $IMAGE_NAME uupu/$IMAGE_NAME
-#        # IMAGE_ID=uupu/$IMAGE_NAME
-#        # 转换大写为小写
-#        # IMAGE_ID=$(echo $IMAGE_ID | tr '[A-Z]' '[a-z]'
-#      - run: docker push uupu/$IMAGE_NAME
+      - run: docker build . --file Dockerfile -tag $IMAGE_NAME
+      - run: docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin ${{ secrets.DOCKER_PASSWORD }}
+      - run: docker tag $IMAGE_NAME uupu/$IMAGE_NAME
+        # IMAGE_ID=uupu/$IMAGE_NAME
+        # 转换大写为小写
+        # IMAGE_ID=$(echo $IMAGE_ID | tr '[A-Z]' '[a-z]'
+      - run: docker push uupu/$IMAGE_NAME
