@@ -17,9 +17,10 @@ jobs:
       - uses: actions/setup-java@v1
         with:
           java-version: 1.8
-      - run: mvn package -U -Dcodegen.skip -Dmaven.test.skip=true
-      - run : mv $APP_JAR_DIR app.jar
-      - run: docker build -f Dockerfile -t $IMAGE_NAME .
+      - run: |-
+          mvn package -U -Dcodegen.skip -Dmaven.test.skip=true
+          mv $APP_JAR_DIR app.jar
+          docker build -f Dockerfile -t $IMAGE_NAME .      
   push:
     runs-on: ubuntu-latest
     steps:
