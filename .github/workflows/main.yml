@@ -7,6 +7,7 @@ on:
 
 env:
   IMAGE_NAME: qianguangfu
+  APP_JAR_DIR: target/actions-0.0.1-SNAPSHOT.jar
 
 jobs:
   job1-build:
@@ -17,8 +18,9 @@ jobs:
         with:
           java-version: 1.8
       - run: mvn package -U -Dcodegen.skip -Dmaven.test.skip=true
+      - run : mv $APP_JAR_DIR app.jar
 
-  job3-push:
+  job2-push:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
