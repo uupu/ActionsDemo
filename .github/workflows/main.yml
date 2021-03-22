@@ -16,7 +16,7 @@ jobs:
       - uses: actions/setup-java@v1
         with:
           java-version: 1.8
-      - run: mvn --batch-mode --update-snapshots verify
+      - run: mvn package -U -Dcodegen.skip -Dmaven.test.skip=true
 
   job3-push:
     runs-on: ubuntu-latest
