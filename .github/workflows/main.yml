@@ -23,7 +23,7 @@ jobs:
       - run: docker build -f Dockerfile -t $IMAGE_NAME .
       - uses: elgohr/Publish-Docker-Github-Action@master
         with:
-          name: ${{ secrets.DOCKER_USERNAME }}/$IMAGE_NAME
+          name: ${{ secrets.DOCKER_USERNAME }}/qianguangfu
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
           tag_with_ref: true
