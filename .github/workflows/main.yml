@@ -21,7 +21,7 @@ jobs:
       - run : mv $APP_JAR_DIR app.jar
 #      # 构建镜像，指定镜像名
       - run: docker build -f Dockerfile -t $IMAGE_NAME .
-      - run: docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin ${{ secrets.DOCKER_PASSWORD }}
+      - run: winpty docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin ${{ secrets.DOCKER_PASSWORD }}
       - run: docker tag $IMAGE_NAME uupu/$IMAGE_NAME
         # IMAGE_ID=uupu/$IMAGE_NAME
         # 转换大写为小写
