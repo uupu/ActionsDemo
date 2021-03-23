@@ -42,6 +42,7 @@ jobs:
       - uses: matheusvanzan/sshpass-action@v2
         with:
           host: ${{ secrets.SERVER_HOST }}
+          prot: 22
           user: ${{ secrets.SERVER_USER }}
           pass: ${{ secrets.SERVER_PASS }}
           run: |-
