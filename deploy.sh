@@ -10,6 +10,7 @@ if test -n "$(docker ps -a |grep $app_name)" ; then
   echo "停止并且删除容器"
   docker stop $app_name
   docker rm $app_name
+  docker rmi $app_name:latest
 else
   echo "未检查到$app_name容器运行"
 fi
