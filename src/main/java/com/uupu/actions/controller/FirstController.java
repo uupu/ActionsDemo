@@ -13,8 +13,8 @@ import java.util.Map;
  * @date: 2021/3/22 5:12 下午
  */
 @RestController
-@RequestMapping("/actions")
-public class ActionsController {
+@RequestMapping("/first")
+public class FirstController {
 
     @GetMapping(produces = {"application/json"})
     public String helloActions() {
