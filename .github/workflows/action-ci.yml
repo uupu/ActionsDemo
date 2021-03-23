@@ -6,7 +6,7 @@ on:
       - develop
 
 env:
-  IMAGE_NAME: qianguangfu
+  IMAGE_NAME: actions
   APP_JAR_DIR: target/actions-0.0.1-SNAPSHOT.jar
 
 jobs:
