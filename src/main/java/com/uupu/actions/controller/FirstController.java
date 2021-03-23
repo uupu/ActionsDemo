@@ -18,6 +18,6 @@ public class FirstController {
 
     @GetMapping(produces = {"application/json"})
     public String helloActions() {
-        return "Hello!Actions";
+        return "Hello!真不容易！wc!";
     }
 }
