@@ -43,7 +43,7 @@ jobs:
       - uses: garygrossgarten/github-action-scp@release
         with:
           local: deploy.sh
-          remote: /$PROJECT_DIR/deploy.sh
+          remote: $PROJECT_DIR/deploy.sh
           host: ${{ secrets.SERVER_HOST }}
           username: ${{ secrets.SERVER_USER }}
           password: ${{ secrets.SERVER_PASS }}
@@ -54,5 +54,5 @@ jobs:
           password: ${{ secrets.SERVER_PASS }}
           port: 22
           script: |-
-            chmod +x /$PROJECT_DIR/deploy.sh
-            sh /$PROJECT_DIR/deploy.sh
+            chmod +x $PROJECT_DIR/deploy.sh
+            sh $PROJECT_DIR/deploy.sh
