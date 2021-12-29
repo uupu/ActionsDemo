@@ -22,10 +22,16 @@ jobs:
       - uses: elgohr/Publish-Docker-Github-Action@master
         with:
           registry: registry.cn-shanghai.aliyuncs.com
-          name: ${{ secrets.ALIYUN_IMAGE_REGISTRY }}/actions
+          name: ${{ secrets.ALIYUN_IMAGE_REGISTRY_ONLINE }}/actions
           username: ${{ secrets.ALIYUN_IMAGE_USERNAME }}
           password: ${{ secrets.ALIYUN_IMAGE_PASSWORD }}
           tag_names: true
+      - uses: elgohr/Publish-Docker-Github-Action@master
+        with:
+          registry: registry.cn-shanghai.aliyuncs.com
+          name: ${{ secrets.ALIYUN_IMAGE_REGISTRY_ONLINE }}/actions
+          username: ${{ secrets.ALIYUN_IMAGE_USERNAME }}
+          password: ${{ secrets.ALIYUN_IMAGE_PASSWORD }}
 
   deploy:
     needs: compile-build
@@ -34,8 +40,8 @@ jobs:
       - uses: actions/checkout@v1
       - uses: garygrossgarten/github-action-scp@release
         with:
-          local: deploy.sh
-          remote: deploy.sh
+          local: deploy-prod.sh
+          remote: deploy-prod.sh
           host: ${{ secrets.SERVER_HOST }}
           username: ${{ secrets.SERVER_USER }}
           password: ${{ secrets.SERVER_PASS }}
@@ -46,6 +52,5 @@ jobs:
           password: ${{ secrets.SERVER_PASS }}
           port: 22
           script: |-
-            chmod +x deploy.sh
-            sh deploy.sh
-            rm -rf deploy.sh
+            chmod +x deploy-prod.sh
+            sh deploy-prod.sh
