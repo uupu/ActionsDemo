@@ -1,4 +1,4 @@
-name: Jave8 CICD with Actions
+name: Prod CICD with Actions
 
 on:
   push:
