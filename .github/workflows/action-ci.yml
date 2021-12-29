@@ -36,7 +36,7 @@ jobs:
           name: ${{ secrets.ALIYUN_IMAGE_REGISTRY }}/actions
           username: ${{ secrets.ALIYUN_IMAGE_USERNAME }}
           password: ${{ secrets.ALIYUN_IMAGE_PASSWORD }}
-          tags: "${{ env.STATE_RELEASE_VERSION }},latest"
+          tags: "latest,${{ env.STATE_RELEASE_VERSION }}"
           tag_names: true
 
   deploy:
