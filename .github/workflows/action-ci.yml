@@ -31,13 +31,14 @@ jobs:
           mv $APP_JAR_DIR app.jar
           docker build -f Dockerfile -t $IMAGE_NAME .
       - uses: elgohr/Publish-Docker-Github-Action@master
+        env:
+          IMOGE_NAME: $IMAGE_NAME
         with:
           registry: registry.cn-shanghai.aliyuncs.com
-          name: ${{ secrets.ALIYUN_IMAGE_REGISTRY }}/actions
+          name: ${{ secrets.ALIYUN_IMAGE_REGISTRY }}/IMOGE_NAME
           username: ${{ secrets.ALIYUN_IMAGE_USERNAME }}
           password: ${{ secrets.ALIYUN_IMAGE_PASSWORD }}
-          tags: "latest,${{ env.STATE_RELEASE_VERSION }}"
-          tag_names: true
+          tags: "latest",${{ env.STATE_RELEASE_VERSION }}
 
   deploy:
     needs: compile-build
