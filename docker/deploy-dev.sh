@@ -9,8 +9,8 @@ aliyun_image_registry="registry.cn-shanghai.aliyuncs.com/offline-terry"
 echo "对容器存活进行判断"
 if test -n "$(docker ps -a |grep $app_name)" ; then
   echo "停止并且删除容器"
-  docker stop $app_name
-  docker rm $app_name
+  docker stop $app_name-$tag
+  docker rm $app_name-$tag
   docker rmi $aliyun_image_registry/$app_name:$tag
 else
   echo "未检查到$app_name容器运行"
