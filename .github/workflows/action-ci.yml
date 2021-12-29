@@ -4,10 +4,10 @@ on:
   push:
     branches:
       - sit-deploy
+      - dev-deploy
     tags:
       - 'v*'
 env:
-  PROJECT_DIR: actions-server
   APP_JAR_DIR: target/actions-0.0.1-SNAPSHOT.jar
 
 jobs:
