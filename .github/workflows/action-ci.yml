@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - sit-deploy
+      - tag
 
 env:
   IMAGE_NAME: actions
