@@ -2,9 +2,6 @@ name: Jave8 CICD with Actions
 
 on:
   push:
-    branches:
-      - sit-deploy
-      - dev-deploy
     tags:
       - 'v*'
 env:
