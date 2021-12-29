@@ -6,20 +6,12 @@ on:
       - sit-deploy
     tags:
       - 'v*'
-
 env:
-  IMAGE_NAME: actions
   PROJECT_DIR: actions-server
   APP_JAR_DIR: target/actions-0.0.1-SNAPSHOT.jar
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "测试成功"
-
   compile-build:
-    needs: test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -29,13 +21,11 @@ jobs:
       - run: |-
           mvn package -U -Dcodegen.skip -Dmaven.test.skip=true
           mv $APP_JAR_DIR app.jar
-          docker build -f Dockerfile -t $IMAGE_NAME .
+          docker build -f Dockerfile .
       - uses: elgohr/Publish-Docker-Github-Action@master
-        env:
-          IMOGE_NAME: $IMAGE_NAME
         with:
           registry: registry.cn-shanghai.aliyuncs.com
-          name: ${{ secrets.ALIYUN_IMAGE_REGISTRY }}/$IMOGE_NAME
+          name: ${{ secrets.ALIYUN_IMAGE_REGISTRY }}/actions
           username: ${{ secrets.ALIYUN_IMAGE_USERNAME }}
           password: ${{ secrets.ALIYUN_IMAGE_PASSWORD }}
           tags: "latest,${{ env.STATE_RELEASE_VERSION }}"
