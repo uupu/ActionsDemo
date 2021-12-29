@@ -3,24 +3,24 @@
 
 app_name="actions"
 port="5989"
-docker_username="uupu"
+aliyun_image_registry="registry.cn-shanghai.aliyuncs.com/dev-terry"
 
 echo "对容器存活进行判断"
 if test -n "$(docker ps -a |grep $app_name)" ; then
   echo "停止并且删除容器"
   docker stop $app_name
   docker rm $app_name
-  docker rmi $docker_username/$app_name:latest
+  docker rmi $aliyun_image_registry/$app_name:latest
 else
   echo "未检查到$app_name容器运行"
 fi
 
 echo "获取最新的镜像"
-docker pull $docker_username/$app_name:latest
+docker pull $aliyun_image_registry/$app_name:latest
 echo "启动服务"
 # 有需要添加的环境变量随时添加
 docker run -itd\
  -e TZ="Asia/Shanghai"\
  -e SERVER_PORT=$port\
  -p $port:$port\
- --name $app_name  $docker_username/$app_name:latest
+ --name $app_name  $aliyun_image_registry/$app_name:latest

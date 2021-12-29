@@ -3,7 +3,7 @@ name: Jave8 CICD with Actions
 on:
   push:
     branches:
-      - develop
+      - sit-deploy
 
 env:
   IMAGE_NAME: actions
@@ -30,9 +30,9 @@ jobs:
           docker build -f Dockerfile -t $IMAGE_NAME .
       - uses: elgohr/Publish-Docker-Github-Action@master
         with:
-          name: ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_REGISTRY }}
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
+          name: ${{ secrets.ALIYUN_IMAGE_REGISTRY }}/$IMAGE_NAME
+          username: ${{ secrets.ALIYUN_IMAGE_USERNAME }}
+          password: ${{ secrets.ALIYUN_IMAGE_PASSWORD }}
           tags: "latest,${{ env.STATE_RELEASE_VERSION }}"
 
   deploy:
