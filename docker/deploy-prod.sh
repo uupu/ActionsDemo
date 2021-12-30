@@ -4,7 +4,7 @@
 app_name="actions"
 port="3000"
 tag="latest"
-aliyun_image_registry="registry.cn-shanghai.aliyuncs.com/prod-terry"
+aliyun_image_registry="registry.cn-shanghai.aliyuncs.com/aliyun-online"
 
 echo "对容器存活进行判断"
 if test -n "$(docker ps -a |grep $app_name)" ; then

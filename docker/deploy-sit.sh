@@ -4,7 +4,7 @@
 app_name="actions"
 port="2000"
 tag="sit-deploy"
-aliyun_image_registry="registry.cn-shanghai.aliyuncs.com/offline-terry"
+aliyun_image_registry="registry.cn-shanghai.aliyuncs.com/aliyun-terry"
 
 echo "对容器存活进行判断"
 if test -n "$(docker ps -a |grep $app_name)" ; then
