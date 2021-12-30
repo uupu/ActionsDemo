@@ -17,6 +17,7 @@ else
 fi
 
 echo "获取最新的镜像"
+docker login -u $aliyun_image_registry_user -p $aliyun_image_registry_password registry.cn-shanghai.aliyuncs.com
 docker pull $aliyun_image_registry/$app_name:$tag
 echo "启动服务"
 # 有需要添加的环境变量随时添加
